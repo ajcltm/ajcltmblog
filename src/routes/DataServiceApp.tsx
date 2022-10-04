@@ -9,9 +9,10 @@ import Footer from '../components/Footer';
 
 
 function DataServiceApp() {
+  const NavTitleProps = [{'title':'about', 'path':'archive/about'}]
   return (
     <div className='screen-grid'>
-      <Nav />
+      <Nav navs={NavTitleProps}/>
       <Content gridColumn={8}/>
     </div>
   );

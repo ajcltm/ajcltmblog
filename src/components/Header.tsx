@@ -10,10 +10,10 @@ export default function Header() {
                 </div>
                 <div className="main-menu-wraper">
                     <div className="main-menu-nav-wraper">
-                        <Link className="main-menu-nav" to="/about">About</Link>
+                        <Link className="main-menu-nav" to="about">About</Link>
                         <Link className="main-menu-nav" to="webBusiness">Web Business</Link>
                         <Link className="main-menu-nav" to="dataService">Data Service</Link>
-                        <Link className="main-menu-nav" to="archive">Achieve</Link>
+                        <Link className="main-menu-nav" to="archive/about">Achieve</Link>
                     </div>
                     <form className="search-form">
                         <input className="search-input" type='text' name='search' placeholder="Search.."/>

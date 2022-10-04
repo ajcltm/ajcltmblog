@@ -18,8 +18,9 @@ ReactDOM.render(
                 <Route path="/about" element={<AboutApp />} />
                 <Route path="/webBusiness" element={<WebBusinessApp />} />
                 <Route path="/dataService" element={<DataServiceApp />} />
-                <Route path="/archive" element={<ArchiveApp />} />
+                <Route path="/archive" element={<ArchiveApp />}>
                     <Route path="/archive/about" element={<Content gridColumn={6} />} />
+                </Route>
             </Route>
         </Routes>
     </Router>,

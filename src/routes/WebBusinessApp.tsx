@@ -8,9 +8,10 @@ import Advertise from '../components/Advertise';
 import Footer from '../components/Footer';
 
 function WebBusinessApp() {
+  const NavTitleProps = [{'title':'about', 'path':'about'}]
   return (
     <div className='screen-grid'>
-      <Nav />
+      <Nav navs={NavTitleProps}/>
       <Content gridColumn={8} />
     </div>
   );

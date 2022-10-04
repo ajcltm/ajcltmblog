@@ -1,13 +1,23 @@
 import React from "react"
 import {Outlet, Link} from "react-router-dom"
 
-export default function Nav() {
+interface NavTitleProp {
+    'title': string;
+    'path': string;
+}
+
+interface NavTitleProps {
+    'navs': Array<NavTitleProp>
+}
+
+export default function Nav(NavTitleProps:NavTitleProps) {
+    const navElement = NavTitleProps.navs.map(NavTitleProp => {
+        return <Link className='main-nav-item' to={NavTitleProp.path}>{NavTitleProp.title}</Link>
+    })
     return (
         <nav className='main-nav'>
             <div className='main-nav-wraper'>
-                <Link className='main-nav-item' to="about">Nav 1</Link>
-                <Link className='main-nav-item' to="">Nav 2</Link>
-                <Link className='main-nav-item' to="">Nav 3</Link>
+                {navElement}
             </div>
         </nav>
     )

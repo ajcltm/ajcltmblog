@@ -7,9 +7,10 @@ import Advertise from '../components/Advertise';
 import {BrowserRouter as Router, Routes, Route, Outlet} from "react-router-dom";
 
 function ArchiveApp() {
+  const NavTitleProps = [{'title':'about', 'path':'about'}]
   return (
     <div className='screen-grid'>
-      <Nav />
+      <Nav navs={NavTitleProps}/>
       <Outlet />
       <Aside />
       <Advertise />
