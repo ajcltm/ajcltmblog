@@ -2,15 +2,17 @@ import React from "react"
 import {Outlet, Link} from "react-router-dom"
 
 export default function Header() {
+
+
     
     const [loginData, setLoginData] = React.useState(
         {
-            'id': "",
+            'id_': "",
             'pw': ""
         }
     )
 
-    function handleChange(event:any) {
+    function handleChange(event:React.ChangeEvent<HTMLInputElement>) {
         
         const {name, value} = event.target
         setLoginData(preLoginData => {
@@ -21,13 +23,29 @@ export default function Header() {
             )
     }
 
-    function handleSubmit(event:any) {
-        event.preventDefault()
-        console.log(loginData)
+    function handleSubmit(event:React.FormEvent<HTMLFormElement>) {
+        type LoginData = {
+            id_: string;
+            pw: string
+        }
 
-        fetch("http://localhost:8000")
-        .then(res => res.json())
-        .then(data => console.log(data))
+        event.preventDefault()
+
+        async function postData(url:string = '', data:LoginData) {
+            console.log(`${JSON.stringify(data)}`)
+            const response = await fetch(url, {
+              method: 'POST',
+              headers: {'Content-Type':'application/json'},
+              body: JSON.stringify(data)
+            });
+            return response.json();
+          }
+        
+        console.log(JSON.stringify(loginData))
+        postData("http://localhost:8000/login", loginData)
+        .then((data) => {
+        console.log(data);
+        }).catch(error => console.log(error));
     }
     
 
@@ -53,9 +71,9 @@ export default function Header() {
                         <button className="link" data-dropdown-button> Login </button>
                         <form className="dropdown-menu" onSubmit={handleSubmit}>
                             <label className="login-label">ID</label>
-                            <input type='text' placeholder="id" name='id' className="login-input" onChange={handleChange} />
+                            <input type='text' placeholder="id" name='id_' className="login-input" onChange={handleChange} />
                             <label className="login-label">Password</label>
-                            <input type='text' placeholder="password" name='pw' className="login-input" onChange={handleChange} />
+                            <input type='password' placeholder="password" name='pw' className="login-input" onChange={handleChange} />
                             <button className="login-submit">login</button>
                         </form>
                     </div>
