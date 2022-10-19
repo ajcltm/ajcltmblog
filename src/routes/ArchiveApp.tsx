@@ -25,20 +25,21 @@ function ArchiveApp() {
   function ceateNewContent() {
     const newContent : Contents = {
       id: nanoid(),
-      title: 'New Category',
+      title: '',
       content: 'This is the new content!'
     }
-    setContents(prevContents => [newContent, ...prevContents])
+    setContents(prevContents => [...prevContents, newContent])
     setCurrentContentId(newContent.id)
   }
 
-  function updateNote(text:string) {
+  function updateCategory(event:React.ChangeEvent<HTMLInputElement>) {
     setContents(oldContents => oldContents.map(oldContent => {
       return oldContent.id === currentContentId
-        ? {...oldContent, content:text}
+        ? {...oldContent, title:event.target.value}
         : oldContent
     }))
   }
+
 
   function findCurrentContent() {
     return contents.find(content => {
@@ -54,6 +55,7 @@ function ArchiveApp() {
         currentContent={findCurrentContent()} 
         setCurrentContentId={setCurrentContentId} 
         newContent={ceateNewContent}
+        changeContent={updateCategory}
       />
       <Outlet />
       <Aside />

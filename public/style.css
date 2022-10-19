@@ -348,11 +348,21 @@ html, body {
 }
 
 .archiveNav-input{
-    width: 80%;
+    width: 100%;
     height: 3rem;
     background-color: #2d2d2d;
     color: white;
+    text-align: center;
+    margin-top: .5rem;
 }
+
+.archiveNav-input:focus{
+    outline: none;
+}
+
+.archiveNav-input:focus:focus::placeholder {
+    color: transparent;
+  }
 
 .archive-nav {
     grid-column: 1 / span 2;
@@ -375,6 +385,7 @@ html, body {
     height: 100%;
     padding-top: 50px;
     margin-top: auto;
+    border-bottom: white;
 }
 
 .archive-nav-item{
@@ -387,6 +398,7 @@ html, body {
     flex-basis: 0;
     background-color: #21222A;
     color: white;
+    margin-top: .5rem;
 }
 
 .archive-nav-item:focus { outline: none; }
