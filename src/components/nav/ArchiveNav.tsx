@@ -14,11 +14,11 @@ type ContentsData = {
 
 type ArchiveNavProps = {
     admin : boolean;
-    contents : Array<ContentsData>
-    currentContent : ContentsData
-    setCurrentContentId : React.Dispatch<React.SetStateAction<string>>
-    newContent : ()=>void
-    changeContent : (event:React.ChangeEvent<HTMLInputElement>)=>void
+    contentsData : Array<ContentsData>
+    currentCategory : ContentsData
+    setCurrentCategoryId : React.Dispatch<React.SetStateAction<string>>
+    newCategory : ()=>void
+    changeCategory : (event:React.ChangeEvent<HTMLInputElement>)=>void
 };
 
 function ArchiveCategoryAdd(props:ArchiveNavProps) {
@@ -26,18 +26,18 @@ function ArchiveCategoryAdd(props:ArchiveNavProps) {
     return (
         <div className="archive-nav-header">
             <h4>Category Add</h4>
-            <button className='archive-nav-add-button' onClick={props.newContent}> + </button>
+            <button className='archive-nav-add-button' onClick={props.newCategory}> + </button>
         </div>
     )
 }
 
 function AdminArchiveNav(props:ArchiveNavProps) {
 
-    const inputElement = props.contents.map(content=> {
-        return <input className='archiveNav-input' type='text' placeholder='New Category' value={content.CategoryTitle} onChange={props.changeContent} onClick={()=>props.setCurrentContentId(content.CategoryId)}/>
+    const inputElement = props.contentsData.map(content=> {
+        return <input className='archiveNav-input' type='text' placeholder='New Category' value={content.CategoryTitle} onChange={props.changeCategory} onClick={()=>props.setCurrentCategoryId(content.CategoryId)}/>
 })
     return (
-        props.contents.length > 0 ?
+        props.contentsData.length > 0 ?
         <div className='archive-nav-wraper'>
             {inputElement}
         </div>
@@ -52,19 +52,19 @@ function ArchiveNav(props:ArchiveNavProps) {
             <div className='archive-nav'>  
                 <ArchiveCategoryAdd
                 admin={props.admin} 
-                contents={props.contents} 
-                currentContent={props.currentContent} 
-                setCurrentContentId={props.setCurrentContentId} 
-                newContent={props.newContent}
-                changeContent={props.changeContent}
+                contentsData={props.contentsData} 
+                currentCategory={props.currentCategory} 
+                setCurrentCategoryId={props.setCurrentCategoryId} 
+                newCategory={props.newCategory}
+                changeCategory={props.changeCategory}
                 />
                 <AdminArchiveNav 
                 admin={props.admin} 
-                contents={props.contents} 
-                currentContent={props.currentContent} 
-                setCurrentContentId={props.setCurrentContentId} 
-                newContent={props.newContent}
-                changeContent={props.changeContent}
+                contentsData={props.contentsData} 
+                currentCategory={props.currentCategory} 
+                setCurrentCategoryId={props.setCurrentCategoryId} 
+                newCategory={props.newCategory}
+                changeCategory={props.changeCategory}
                 />
             </div>
         :

@@ -7,6 +7,7 @@ import WebBusinessApp from './routes/WebBusinessApp';
 import DataServiceApp from './routes/DataServiceApp';
 import ArchiveApp from './routes/ArchiveApp';
 import Content from './components/Content';
+import ArchiveContent from './components/ArchiveContent'
 
 // ReactDOM.render(<App/>, document.getElementById("root"))
 
@@ -19,7 +20,7 @@ ReactDOM.render(
                 <Route path="/webBusiness" element={<WebBusinessApp />} />
                 <Route path="/dataService" element={<DataServiceApp />} />
                 <Route path="/archive" element={<ArchiveApp />}>
-                    <Route path="/archive/about" element={<Content gridColumn={6} />} />
+                    <Route path="/archive/about" element={<ArchiveContent/>} />
                 </Route>
             </Route>
         </Routes>
