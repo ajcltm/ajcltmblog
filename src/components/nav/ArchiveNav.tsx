@@ -1,15 +1,21 @@
 import React from 'react';
 
-type Contents = {
+type Content = {
     id: string;
     title: string;
-    content: string;
+    body: string;
+  }
+
+type ContentsData = {
+    CategoryId: string;
+    CategoryTitle: string;
+    contents: Content[];
 }
 
 type ArchiveNavProps = {
     admin : boolean;
-    contents : Array<Contents>
-    currentContent : Contents
+    contents : Array<ContentsData>
+    currentContent : ContentsData
     setCurrentContentId : React.Dispatch<React.SetStateAction<string>>
     newContent : ()=>void
     changeContent : (event:React.ChangeEvent<HTMLInputElement>)=>void
@@ -28,7 +34,7 @@ function ArchiveCategoryAdd(props:ArchiveNavProps) {
 function AdminArchiveNav(props:ArchiveNavProps) {
 
     const inputElement = props.contents.map(content=> {
-        return <input className='archiveNav-input' type='text' placeholder='New Category' value={content.title} onChange={props.changeContent} onClick={()=>props.setCurrentContentId(content.id)}/>
+        return <input className='archiveNav-input' type='text' placeholder='New Category' value={content.CategoryTitle} onChange={props.changeContent} onClick={()=>props.setCurrentContentId(content.CategoryId)}/>
 })
     return (
         props.contents.length > 0 ?
@@ -68,11 +74,11 @@ function ArchiveNav(props:ArchiveNavProps) {
         // props.admin ?
         // (props.contents.length > 0 ?
         //     props.contents.map(content=> {
-        //     <input type='text' value={content.title} />})
+        //     <input type='text' value={content.CategoryTitle} />})
         //     : <input type='text' /> ) :
         // (props.contents.length>0?
         //     props.contents.map(content=> {
-        //         return <a href="">{content.title}</a>}) :
+        //         return <a href="">{content.CategoryTitle}</a>}) :
         //         <div></div>)
     );
 };

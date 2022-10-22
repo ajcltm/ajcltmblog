@@ -9,33 +9,40 @@ import {BrowserRouter as Router, Routes, Route, Outlet} from "react-router-dom";
 import {nanoid} from 'nanoid'
 
 function ArchiveApp() {
-  type Contents = {
+
+  type Content = {
     id: string;
     title: string;
-    content: string;
+    body: string;
+  }
+
+  type ContentsData = {
+    CategoryId: string;
+    CategoryTitle: string;
+    contents: Content[];
 }
   // const contents = [{id:'0001', 'title': 'newContent', 'content':'This is the content!'}]
   // const Contents: Contents[] = []
 
-  const [contents, setContents] = React.useState<Contents[]>([])
+  const [contents, setContents] = React.useState<ContentsData[]>([])
   const [currentContentId, setCurrentContentId] = React.useState(
-    (contents[0] && contents[0].id) || ""
+    (contents[0] && contents[0].CategoryId) || ""
   )
 
   function ceateNewContent() {
-    const newContent : Contents = {
-      id: nanoid(),
-      title: '',
-      content: 'This is the new content!'
+    const newContent : ContentsData = {
+      CategoryId: nanoid(),
+      CategoryTitle: '',
+      contents: [{id:nanoid(), title: 'New contet title', body:'This is the new content!'}]
     }
     setContents(prevContents => [...prevContents, newContent])
-    setCurrentContentId(newContent.id)
+    setCurrentContentId(newContent.CategoryId)
   }
 
   function updateCategory(event:React.ChangeEvent<HTMLInputElement>) {
     setContents(oldContents => oldContents.map(oldContent => {
-      return oldContent.id === currentContentId
-        ? {...oldContent, title:event.target.value}
+      return oldContent.CategoryId === currentContentId
+        ? {...oldContent, CategoryTitle:event.target.value}
         : oldContent
     }))
   }
@@ -43,7 +50,7 @@ function ArchiveApp() {
 
   function findCurrentContent() {
     return contents.find(content => {
-      return content.id === currentContentId
+      return content.CategoryId === currentContentId
     }) || contents[0]
   }
 
