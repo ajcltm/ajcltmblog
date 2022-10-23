@@ -1,15 +1,20 @@
-import React from "react"
+import React, { useEffect } from "react"
 import {Outlet, Link} from "react-router-dom"
 
 export default function Header() {
 
-
-    
     const [loginData, setLoginData] = React.useState(
         {
             'id_': "",
             'pw': ""
         }
+    )
+
+    const [loginState, setLoginState] = React.useState<boolean>(false)
+
+    useEffect(()=> {
+        console.log(loginState)
+    },[loginState]
     )
 
     function handleChange(event:React.ChangeEvent<HTMLInputElement>) {
@@ -45,6 +50,7 @@ export default function Header() {
         postData("http://localhost:8000/login", loginData)
         .then((data) => {
         console.log(data);
+        setLoginState(data.result);
         }).catch(error => console.log(error));
     }
     
@@ -68,7 +74,11 @@ export default function Header() {
                 </div>
                 <div className="head-profile-wraper">
                     <div className="dropdown" data-dropdown>
-                        <button className="link" data-dropdown-button> Login </button>
+                        {
+                            loginState?<button className="link" data-dropdown-button onClick={()=>setLoginState(false)}> Login Out </button>
+                            : <button className="link" data-dropdown-button> Login </button>
+                        }
+                        
                         <form className="dropdown-menu" onSubmit={handleSubmit}>
                             <label className="login-label">ID</label>
                             <input type='text' placeholder="id" name='id_' className="login-input" onChange={handleChange} />
@@ -77,7 +87,11 @@ export default function Header() {
                             <button className="login-submit">login</button>
                         </form>
                     </div>
-                    <img className="head-profile" src='/images/icon.jpg'/>
+                    {
+                        loginState?<img className="head-profile" src='/images/icon.jpg'/>
+                        : <div></div>
+                    }
+                    
                 </div>
             </div>
         </header>

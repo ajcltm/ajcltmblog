@@ -1,5 +1,6 @@
 import React from 'react';
 import ArchiveNav from '../components/nav/ArchiveNav';
+import ArchiveSidebar from '../components/nav/ArchiveSidebar';
 import Aside from '../components/Aside';
 import Advertise from '../components/Advertise';
 import {Outlet, useOutletContext} from "react-router-dom";
@@ -27,12 +28,23 @@ type ContentProps = {
   changeContentBody : (event:React.ChangeEvent<HTMLTextAreaElement>)=>void
 }
 
+// type SidebarProps = {
+//   admin: boolean;
+//   contentsData : Array<ContentsData>
+//   currentCategory : ContentsData
+//   currentContent : Content
+//   setCurrentContentId : React.Dispatch<React.SetStateAction<string>>
+//   newContent : ()=>void
+//   changeContentTitle : (event:React.ChangeEvent<HTMLInputElement>)=>void
+//   changeContentBody : (event:React.ChangeEvent<HTMLTextAreaElement>)=>void
+// }
+
 function ArchiveApp() {
 
   const newContent : ContentsData = {
     CategoryId: nanoid(),
     CategoryTitle: '',
-    contents: [{id:nanoid(), title: '', body:''}]
+    contents: [{id:nanoid(), title: 'new content title', body:'This is the new content!'}]
   }
 
   const [contentsData, setContentsData] = React.useState<ContentsData[]>([newContent])
@@ -44,7 +56,7 @@ function ArchiveApp() {
     const newContent : ContentsData = {
       CategoryId: nanoid(),
       CategoryTitle: '',
-      contents: [{id:nanoid(), title: '', body:''}]
+      contents: [{id:nanoid(), title: 'new content title', body:'This is the new content!'}]
     }
     setContentsData(prevContents => [...prevContents, newContent])
     setCurrentCategoryId(newContent.CategoryId)
@@ -72,7 +84,7 @@ function ArchiveApp() {
   function ceateNewContent() {
     const newContent : Content = {
       id: nanoid(),
-      title: '',
+      title: 'new content title',
       body: 'This is the new content!'
     }
     
@@ -148,6 +160,7 @@ function ArchiveApp() {
     changeContentBody : updateContentBody
   }
 
+
   return (
     <div className='screen-grid'>
       <ArchiveNav 
@@ -159,7 +172,17 @@ function ArchiveApp() {
         changeCategory={updateCategory}
       />
       <Outlet context={contentProps}/>
-      <Aside />
+      {/* <Aside /> */}
+      <ArchiveSidebar
+        admin={true} 
+        contentsData = {contentsData}
+        currentCategory={findCurrentCategory()} 
+        currentContent = {findCurrentContent()}
+        setCurrentContentId = {setCurrentContentId}
+        newContent = {ceateNewContent}
+        changeContentTitle = {updateContentTitle}
+        changeContentBody = {updateContentBody}
+      />
       <Advertise />
     </div>
   );
