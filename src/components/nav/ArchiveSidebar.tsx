@@ -26,9 +26,9 @@ type SidebarProps = {
     
 function ArchiveContentAdd(props:SidebarProps) {
     return (
-        <div className="archive-nav-header">
+        <div className="archive-sidebar-add-header">
             <h4>Contents Add</h4>
-            <button className='archive-nav-add-button' onClick={props.newContent}> + </button>
+            <button className='archive-sidebar-add-button' onClick={props.newContent}> + </button>
         </div>
     )
 }
@@ -36,16 +36,16 @@ function ArchiveContentAdd(props:SidebarProps) {
 function AdminArchiveSidebar(props:SidebarProps) {
 
     const inputElement = props.currentCategory.contents.map(content=>{
-            return <a className='archive-sidebar' onClick={()=>props.setCurrentContentId(content.id)}> {content.title} </a>
+            return <a className='archive-sidebar-item' onClick={()=>props.setCurrentContentId(content.id)}> {content.title} </a>
         })       
 
     return (
         props.contentsData.length > 0 ?
-        <div className='archive-nav-wraper'>
+        <div className='archive-sidebar-wraper'>
             {inputElement}
         </div>
         :
-        <div className="archive-nav-wraper"></div> 
+        <div className="archive-sidebar-wraper"></div> 
     )
 }
 
