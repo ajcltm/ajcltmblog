@@ -1,8 +1,8 @@
 import React from 'react';
-import ArchiveNav from '../components/nav/ArchiveNav';
-import ArchiveSidebar from '../components/nav/ArchiveSidebar';
-import Aside from '../components/Aside';
-import Advertise from '../components/Advertise';
+import ArchiveNav from './ArchiveNav';
+import ArchiveSidebar from './ArchiveSidebar';
+import Aside from '../Aside';
+import Advertise from '../Advertise';
 import {Outlet, useOutletContext} from "react-router-dom";
 import {nanoid} from 'nanoid'
 

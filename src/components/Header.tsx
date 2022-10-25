@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import {Outlet, Link} from "react-router-dom"
+import {Link} from "react-router-dom"
 
 export default function Header() {
 
@@ -64,7 +64,7 @@ export default function Header() {
                 <div className="main-menu-wraper">
                     <div className="main-menu-nav-wraper">
                         <Link className="main-menu-nav" to="about">About</Link>
-                        <Link className="main-menu-nav" to="webBusiness">Web Business</Link>
+                        <Link className="main-menu-nav" to="webBusiness/theme">Web Business</Link>
                         <Link className="main-menu-nav" to="dataService">Data Service</Link>
                         <Link className="main-menu-nav" to="archive/about">Achieve</Link>
                     </div>

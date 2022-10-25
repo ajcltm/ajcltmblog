@@ -251,6 +251,81 @@ html, body {
     margin: 0px;
 }
 
+.web-nav{
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2 ;
+    display: flex;
+    flex-direction: column;
+    background-color: #252526;
+    color: white;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-end;
+    padding-top: 4rem;
+}
+
+.web-nav-item{
+    width: 100%;
+    height: 20%;
+    padding: 10px 0 10px 0;
+    text-decoration: none;
+    flex-basis: 0;
+    background-color: #2d2d2d;
+    color: white;
+    margin-top: .5rem;
+    font-size: 15px;
+    text-align: center;
+}
+
+.web-nav-item:hover{
+    color:aqua;
+    /* transform: scale(1.1); */
+    transition: .3s;
+}
+
+.web-content {
+    grid-column: 3 / span 8;
+    grid-row: 1 / span 2;
+    background-color: #252526;
+
+}
+
+.web-content-theme {
+    margin: 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: 150px;
+}
+
+.web-content-theme-item {
+    grid-column: span 2;
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    color: whitesmoke;
+    font-size: 1.4rem;
+} 
+
+.web-content-theme-item > img {
+    width: 100%;
+    height: 100%;
+} 
+
+.web-content-contact-wrap {
+    padding: 5rem;
+    color: white;
+}
+
+.web-content-contact-wrap ul li {
+    margin-top: 2rem;
+    font-size: 1.7rem;
+}
+
+.web-content-contact-wrap ul p {
+    margin-top: 1rem;
+    font-size: 1.4rem;
+}
+
 .main-nav {
     grid-column: 1 / span 2;
     grid-row: 1 / span 2 ;
@@ -268,7 +343,6 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
     padding: 10px 0 10px 0;
     text-decoration: none;
     flex-basis: 0;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useContentProps } from '../routes/ArchiveApp'
+import { useContentProps } from './ArchiveApp'
 import ReactMde from 'react-mde'
 import Showdown from 'showdown'
 
