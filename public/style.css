@@ -326,6 +326,18 @@ html, body {
     font-size: 1.4rem;
 }
 
+.web-link {
+    color: white;
+}
+
+.web-link:visited {
+    color: white;
+}
+
+.web-link:hover {
+    color: white;
+}
+
 .main-nav {
     grid-column: 1 / span 2;
     grid-row: 1 / span 2 ;

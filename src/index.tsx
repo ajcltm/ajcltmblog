@@ -6,9 +6,11 @@ import AboutApp from './routes/AboutApp';
 import WebBusinessApp from './components/webBusinessApp/WebBusinessApp';
 import WebBusinessContentTheme from './components/webBusinessApp/WebBusinessContentTheme';
 import WebBusinessContentContact from './components/webBusinessApp/WebBusinessContentContact';
+import WebBusinessContentThemeHubble from './components/webBusinessApp/theme/hubble/WebBusinessContentThemeHubble';
 import DataServiceApp from './routes/DataServiceApp';
 import ArchiveApp from './components/archiveApp/ArchiveApp';
 import ArchiveContent from './components/archiveApp/ArchiveContent'
+WebBusinessContentThemeHubble
 
 // ReactDOM.render(<App/>, document.getElementById("root"))
 
@@ -27,7 +29,7 @@ ReactDOM.render(
                     <Route path="/archive/about" element={<ArchiveContent/>} />
                 </Route>
             </Route>
-
+            <Route path="/webBusiness/theme/hubble" element={<WebBusinessContentThemeHubble />} />
         </Routes>
     </Router>,
     rootElement
