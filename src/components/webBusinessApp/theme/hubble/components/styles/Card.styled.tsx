@@ -16,8 +16,7 @@ export const StyledCard = styled.div<StyledCardProps>`
     flex-direction: ${(props) => props.layout || 'row'};
 
     img {
-        width: 80%;
-        // padding-left: 50px;
+        width: 35%;
     }
 
     & > div {   
@@ -27,5 +26,8 @@ export const StyledCard = styled.div<StyledCardProps>`
 
     @media(max-width: ${({theme}) => theme.mediaQuery.mobile}) {
         flex-direction : column;
+        img {
+            width: 100%;
+        }
     }
 `

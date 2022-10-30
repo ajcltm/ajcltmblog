@@ -20,10 +20,7 @@ export default function Card(props:CardProps) {
                 <h2>{props.item.title}</h2>
                 <p>{props.item.body}</p>
             </div>
-
-            <div>
-                <img src={`${props.item.image}`} alt="" />
-            </div>
+            <img src={`${props.item.image}`} alt="" />
         </StyledCard>
     )
 }
